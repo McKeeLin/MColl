@@ -1,5 +1,5 @@
 .DS_Store
 */.DS_Store
 **/xcuserdata/
-*/CoderHelper.h
-*/CoderHelper.m
+CoderHelper.h
+CoderHelper.m
