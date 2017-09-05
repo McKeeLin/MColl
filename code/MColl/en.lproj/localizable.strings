@@ -1,0 +1,14 @@
+/* 
+  localizable.strings
+  MColl
+
+*/
+
+"frontCamera" = "Front Camera";
+"backCamera" = "Back Camera";
+"capture" = "Capture";
+"switch" = "Switch";
+"close" = "Close";
+"portrait" = "Portrait";
+"landscape" = "Landscape";
+

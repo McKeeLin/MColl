@@ -1,0 +1,16 @@
+/* 
+  localizable.strings
+  MColl
+
+  Created by 林景隆 on 15-2-7.
+  Copyright (c) 2015年 mckeelin. All rights reserved.
+*/
+
+
+"frontCamera" = "前照相";
+"backCamera" = "后照相";
+"capture" = "拍";
+"switch" = "切换";
+"close" = "关闭";
+"portrait" = "头像";
+"landscape" = "风景";
