@@ -75,6 +75,8 @@
     if( notifcation.object == self.item )
     {
         _imageView.image = self.item.thumbnail;
+        [self setNeedsLayout];
+        [self setNeedsDisplay];
     }
 }
 

@@ -15,8 +15,8 @@
 
 @property (weak) collectionVC *collVC;
 
-+ (instancetype)helper;
+@property CGFloat thumbnailWithHeight;
 
-- (CGFloat)thumbnailWithHeight;
++ (instancetype)helper;
 
 @end

@@ -40,30 +40,14 @@
     _queue = [[NSOperationQueue alloc] init];
     CGFloat titleLabelHeight = 30;
     CGFloat thumbnilHeight = 180;
-    CGFloat minimumLineSpacing = 20;
-    CGFloat minimumInteritemSpacing = 1;
+    CGFloat minimumLineSpacing = 2;
+    CGFloat minimumInteritemSpacing = 2;
     _itemWidth = [appHelper helper].thumbnailWithHeight;
     if( [appHelper helper].isIPhone ){
         titleLabelHeight = 50;
         minimumLineSpacing = 10;
         thumbnilHeight = _itemWidth;
     }
-    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-    layout.itemSize = CGSizeMake(_itemWidth, _itemWidth);
-    layout.minimumLineSpacing = minimumLineSpacing;
-    layout.minimumInteritemSpacing = minimumInteritemSpacing;
-    layout.sectionInset = [appHelper helper].isIPhone ? UIEdgeInsetsMake(10, 5, 5, 5) : UIEdgeInsetsMake(20, 20, 20, 20);
-    _coll = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
-    _coll.delegate = self;
-    _coll.dataSource = self;
-    _coll.bounces = YES;
-    _coll.alwaysBounceVertical = YES;
-    _coll.backgroundColor = [UIColor clearColor];
-    [_coll registerClass:[collCell class] forCellWithReuseIdentifier:COLLECTION_VC_CELL];
-    [_coll registerClass:[CollHeader class]
-        forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
-               withReuseIdentifier:@"CollHeader"];
-    [self.baseContainerView addSubview:_coll];
     
     _toolbar = [[UIToolbar alloc] initWithFrame:CGRectZero];
     _toolbar.backgroundColor = [UIColor colorWithWhite:1 alpha:0.5];
@@ -81,10 +65,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)viewWillLayoutSubviews
-{
-    [super viewWillLayoutSubviews];
-}
 
 - (void)viewDidLayoutSubviews
 {
@@ -93,6 +73,28 @@
     CGFloat toolbarHeight = 40;
     CGFloat width = self.view.bounds.size.width;
     CGFloat height = self.view.bounds.size.height;
+    
+    if( !_coll )
+    {
+        _itemWidth = (width - 2 * 5)/4;
+        [appHelper helper].thumbnailWithHeight = _itemWidth;
+        UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+        layout.itemSize = CGSizeMake(_itemWidth, _itemWidth);
+        layout.minimumLineSpacing = 2;
+        layout.minimumInteritemSpacing = 2;
+        layout.sectionInset = [appHelper helper].isIPhone ? UIEdgeInsetsMake(10, 2, 5, 2) : UIEdgeInsetsMake(20, 20, 20, 20);
+        _coll = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
+        _coll.delegate = self;
+        _coll.dataSource = self;
+        _coll.bounces = YES;
+        _coll.alwaysBounceVertical = YES;
+        _coll.backgroundColor = [UIColor clearColor];
+        [_coll registerClass:[collCell class] forCellWithReuseIdentifier:COLLECTION_VC_CELL];
+        [_coll registerClass:[CollHeader class]
+  forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
+         withReuseIdentifier:@"CollHeader"];
+        [self.baseContainerView addSubview:_coll];
+    }
     _toolbar.frame = CGRectMake(0, self.baseContainerView.frame.size.height - toolbarHeight, width, toolbarHeight);
     _coll.frame = CGRectMake(0, 0, width, height-toolbarHeight);
 }

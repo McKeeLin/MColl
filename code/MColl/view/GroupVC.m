@@ -48,26 +48,13 @@
     _itemWidth = [appHelper helper].thumbnailWithHeight;
     CGFloat titleLabelHeight = 30;
     CGFloat thumbnilHeight = 180;
-    CGFloat minimumLineSpacing = 20;
-    CGFloat minimumInteritemSpacing = 1;
+    CGFloat minimumLineSpacing = 2;
+    CGFloat minimumInteritemSpacing = 2;
     if( [appHelper helper].isIPhone ){
         titleLabelHeight = 50;
         minimumLineSpacing = 10;
         thumbnilHeight = _itemWidth;
     }
-    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-    layout.itemSize = CGSizeMake(_itemWidth, _itemWidth);
-    layout.minimumLineSpacing = minimumLineSpacing;
-    layout.minimumInteritemSpacing = minimumInteritemSpacing;
-    layout.sectionInset = [appHelper helper].isIPhone ? UIEdgeInsetsMake(10, 5, 5, 5) : UIEdgeInsetsMake(20, 20, 20, 20);
-    _coll = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
-    _coll.delegate = self;
-    _coll.dataSource = self;
-    _coll.backgroundColor = [UIColor clearColor];
-    _coll.bounces = YES;
-    _coll.alwaysBounceVertical = YES;
-    [_coll registerClass:[collCell class] forCellWithReuseIdentifier:@"GroupVCCell"];
-    [self.view addSubview:_coll];
     
     _captureItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCamera target:self action:@selector(showCapture)];
     
@@ -113,6 +100,25 @@
     CGFloat width = self.view.bounds.size.width;
     CGFloat height = self.view.bounds.size.height;
     CGFloat barHeight = 44;
+    
+    if( !_coll )
+    {
+        _itemWidth = (width - 2 * 5)/4;
+        [appHelper helper].thumbnailWithHeight = _itemWidth;
+        UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+        layout.itemSize = CGSizeMake(_itemWidth, _itemWidth);
+        layout.minimumLineSpacing = 2;
+        layout.minimumInteritemSpacing = 2;
+        layout.sectionInset = [appHelper helper].isIPhone ? UIEdgeInsetsMake(10, 2, 5, 2) : UIEdgeInsetsMake(20, 20, 20, 20);
+        _coll = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
+        _coll.delegate = self;
+        _coll.dataSource = self;
+        _coll.backgroundColor = [UIColor clearColor];
+        _coll.bounces = YES;
+        _coll.alwaysBounceVertical = YES;
+        [_coll registerClass:[collCell class] forCellWithReuseIdentifier:@"GroupVCCell"];
+        [self.view addSubview:_coll];
+    }
     _coll.frame = CGRectMake(0, 0, width, height-barHeight);
     _toolbar.frame = CGRectMake(0, height-barHeight, width, barHeight);
 }
@@ -275,8 +281,8 @@
                 {
                     [_coll deleteItemsAtIndexPaths:idps];
                 }
-                [self onTouchCancel:nil];
             }
+            [self onTouchCancel:nil];
         }];
         return;
     }

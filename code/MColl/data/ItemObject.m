@@ -22,7 +22,7 @@
     CFDictionaryRef options = (__bridge CFDictionaryRef) @{
                                                            (id) kCGImageSourceCreateThumbnailWithTransform : @YES,
                                                            (id) kCGImageSourceCreateThumbnailFromImageAlways : @YES,
-                                                           (id) kCGImageSourceThumbnailMaxPixelSize : @(width)
+                                                           (id) kCGImageSourceThumbnailMaxPixelSize : @(width*4)
                                                            };
     
     CGImageRef scaledImageRef = CGImageSourceCreateThumbnailAtIndex(src, 0, options);

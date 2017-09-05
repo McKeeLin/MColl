@@ -25,13 +25,16 @@
     self = [super init];
     if( self ){
         self.isIPhone = ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone);
+        _thumbnailWithHeight = _isIPhone ? 70 : 80;;
     }
     return self;
 }
 
+/*
 - (CGFloat)thumbnailWithHeight
 {
     return self.isIPhone ? 70 : 80;
 }
+*/
 
 @end
