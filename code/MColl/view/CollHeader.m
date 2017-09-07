@@ -19,7 +19,7 @@
     {
         _groupNameLab = [[UILabel alloc] initWithFrame:CGRectZero];
         _groupNameLab.backgroundColor = [UIColor clearColor];
-        _groupNameLab.font = [UIFont fontWithName:@"PingFang SC" size:12];
+        _groupNameLab.font = [UIFont fontWithName:@"PingFang SC" size:14];
         _groupNameLab.numberOfLines = 1;
         _groupNameLab.textColor = [UIColor grayColor];
         [self addSubview:_groupNameLab];

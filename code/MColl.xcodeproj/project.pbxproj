@@ -44,6 +44,7 @@
 		26471DFF1F4D702500652589 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 26471DFD1F4D702500652589 /* UIImage+ImageEffects.m */; };
 		265380FC1F57A60400C66651 /* CoderHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 265380FB1F57A60400C66651 /* CoderHelper.m */; };
 		265380FD1F57AF8000C66651 /* CoderHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 265380FB1F57A60400C66651 /* CoderHelper.m */; };
+		265586F01F60F0A600ADCDFE /* CoderHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 265380FB1F57A60400C66651 /* CoderHelper.m */; };
 		265F05F11F4F0EE700279435 /* icon20@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 265F05E91F4F0EE700279435 /* icon20@2x.png */; };
 		265F05F21F4F0EE700279435 /* icon20@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 265F05EA1F4F0EE700279435 /* icon20@3x.png */; };
 		265F05F31F4F0EE700279435 /* icon29@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 265F05EB1F4F0EE700279435 /* icon29@2x.png */; };
@@ -801,6 +802,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				26C67E951F3166ED000E352F /* ViewController.m in Sources */,
+				265586F01F60F0A600ADCDFE /* CoderHelper.m in Sources */,
 				26C67E921F3166ED000E352F /* main.m in Sources */,
 				26C67E8F1F3166ED000E352F /* AppDelegate.m in Sources */,
 			);

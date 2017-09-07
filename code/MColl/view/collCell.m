@@ -17,6 +17,7 @@
         if( !_imageView )
         {
             _imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
+            _imageView.layer.contentsGravity = kCAGravityResizeAspectFill;
             [self.contentView addSubview:_imageView];
         }
         if( !_selectionIndicator )
