@@ -277,7 +277,11 @@
     groupObject *group = [[groupObject alloc] init];
     group.title = name;
     group.path = [self pathForGroup:name createWhenNotExist:YES];
+    
+    groupObject *shareGroup = [self findGroupByName:@"共享"];
+    [_groups removeObject:shareGroup];
     [_groups addObject:group];
+    [_groups addObject:shareGroup];
 }
 
 - (void)saveCaputreData:(NSData *)data toGroup:(groupObject*)group
@@ -310,7 +314,7 @@
     NSString *fileName = components.lastObject;
     NSString *dir = _shareGroup.path;
     NSString *destPath = [dir stringByAppendingPathComponent:fileName];
-    NSData *srcData = [NSData dataWithContentsOfURL:fileUrl];
+    NSData *srcData = [[NSData dataWithContentsOfURL:fileUrl] copy];
     NSData *encodeData = [[CoderHelper helper] encodeData:srcData];
     [encodeData writeToFile:destPath atomically:YES];
 }

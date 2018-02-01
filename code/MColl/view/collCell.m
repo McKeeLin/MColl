@@ -46,10 +46,13 @@
     
     CGFloat width = self.bounds.size.width;
     CGFloat height = self.bounds.size.height;
-    CGFloat w = _selectionIndicator.image.size.width;
-    CGFloat h = _selectionIndicator.image.size.height;
+    CGFloat w = 20;// _selectionIndicator.image.size.width;
+    CGFloat h = 20;//_selectionIndicator.image.size.height;
     CGFloat x = width - 5 - w;
     CGFloat y = height - 5 - h;
+    _selectionIndicator.layer.masksToBounds = YES;
+    _selectionIndicator.layer.cornerRadius = w/2;
+    _selectionIndicator.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.6];
     _selectionIndicator.frame = CGRectMake(x, y, w, h);
 }
 

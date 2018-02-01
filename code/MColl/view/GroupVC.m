@@ -195,7 +195,7 @@
     UIBarButtonItem *flexibleItem2 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     if( _group.type == RECYCLE_BOX )
     {
-        _toolbar.items = @[_restoreItem, flexibleItem1, _removeItem];
+        _toolbar.items = @[_restoreItem, flexibleItem1,_removeItem, flexibleItem2, _moveItem];
     }
     else
     {

@@ -147,7 +147,6 @@ referenceSizeForHeaderInSection:(NSInteger)section
     {
         captureVC *vc = [[captureVC alloc] init];
         vc.group = group;
-        vc.collVC = self;
         [self.navigationController presentViewController:vc animated:YES completion:nil];
     }
     else
@@ -220,7 +219,6 @@ referenceSizeForHeaderInSection:(NSInteger)section
 - (void)onCaputreTouchup:(id)sender
 {
     captureVC *vc = [[captureVC alloc] init];
-    vc.collVC = self;
     [self.navigationController presentViewController:vc animated:YES completion:nil];
 }
 

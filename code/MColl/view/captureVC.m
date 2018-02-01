@@ -124,7 +124,6 @@
 - (void)onTouchCapture:(id)sender
 {
     _currentCaptureView.group = _group;
-    _currentCaptureView.collVC = _collVC;
     _currentCaptureView.capVC = self;
     [_currentCaptureView caputre];
 }

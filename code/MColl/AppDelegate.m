@@ -13,6 +13,7 @@
 #import <LocalAuthentication/LocalAuthentication.h>
 #import "collectionVC.h"
 #import "UIImage+ImageEffects.h"
+#import "GroupsVC.h"
 
 @interface AppDelegate ()
 {
@@ -40,7 +41,7 @@
     }
     else
     {
-        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[[collectionVC alloc] init]];
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[GroupsVC fromXib]];
         _window.rootViewController = nav;
     }
     

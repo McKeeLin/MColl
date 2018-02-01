@@ -9,6 +9,7 @@
 #import "TouchIDLoginVC.h"
 #import <LocalAuthentication/LocalAuthentication.h>
 #import "collectionVC.h"
+#import "GroupsVC.h"
 
 @interface TouchIDLoginVC ()
 {
@@ -58,7 +59,7 @@
                  UIWindow *window = [UIApplication sharedApplication].delegate.window;
                  if( window.rootViewController == self )
                  {
-                     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[[collectionVC alloc] init]];
+                     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[GroupsVC fromXib]];
                      window.rootViewController = nav;
                  }
                  else

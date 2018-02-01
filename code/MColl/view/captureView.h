@@ -17,8 +17,6 @@
 
 @property groupObject *group;
 
-@property (weak) collectionVC *collVC;
-
 @property (weak) captureVC *capVC;
 
 - (instancetype)initWithFrame:(CGRect)frame frontCamera:(BOOL)frontCamera;
