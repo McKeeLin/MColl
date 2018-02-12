@@ -10,6 +10,8 @@
 #import "GroupItemCell.h"
 #import "GroupVC.h"
 #import "dataHelper.h"
+#import "LogVC.h"
+#import "LogHelper.h"
 
 @interface GroupsVC ()<UICollectionViewDelegate,UICollectionViewDataSource>
 {
@@ -35,6 +37,10 @@
     
     UINib *cell = [UINib nibWithNibName:@"GroupItemCell" bundle:nil];
     [_collectonView registerNib:cell forCellWithReuseIdentifier:@"GroupItemCell"];
+    
+    UIBarButtonItem *logItem = [[UIBarButtonItem alloc] initWithTitle:@"日志" style:UIBarButtonItemStylePlain target:self action:@selector(showLog)];
+    self.navigationItem.rightBarButtonItem = logItem;
+    [[LogHelper helper] appendLog:@"begin"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -109,6 +115,13 @@
     groupObject *group = [[dataHelper helper] recycleBoxGroup];
     GroupVC *vc = [[GroupVC alloc] init];
     vc.group = group;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+
+- (void)showLog
+{
+    LogVC *vc = [[LogVC alloc] initWithNibName:@"LogVC" bundle:nil];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

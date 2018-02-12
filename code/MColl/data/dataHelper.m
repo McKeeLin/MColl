@@ -2,6 +2,7 @@
 //  dataHelper.m
 //  MColl
 //
+// https://itunesconnect.apple.com/WebObjects/iTunesConnect.woa/ra/ng/app/1274986687/testflight?section=iosbuilds
 //
 
 #import "dataHelper.h"
@@ -9,6 +10,7 @@
 #import "icloudHelper.h"
 #import "appHelper.h"
 #import <ImageIO/ImageIO.h>
+#import "LogHelper.h"
 
 #define COLLECTION_PATH_NAME @"collection"
 #define RECYCLE_BOX_NAME    @"recycleBox"
@@ -222,7 +224,7 @@
         [arr addObject:group];
     }
     
-    NSString *dirName = @"共享";
+    NSString *dirName = @"收件箱";
     NSString *sharePath = [[self sharePath] stringByAppendingPathComponent:dirName];
     NSError *error;
     if( ![fm fileExistsAtPath:sharePath] )
@@ -314,7 +316,17 @@
     NSString *fileName = components.lastObject;
     NSString *dir = _shareGroup.path;
     NSString *destPath = [dir stringByAppendingPathComponent:fileName];
-    NSData *srcData = [[NSData dataWithContentsOfURL:fileUrl] copy];
+    NSError *error;
+    NSData *srcData = [NSData dataWithContentsOfURL:fileUrl options:NSDataReadingMappedIfSafe error:&error];
+    if( error )
+    {
+        NSString *err = [NSString stringWithFormat:@"dataWithContentsOfURL:%@\n error:%@", fileUrl.absoluteString, error.localizedDescription];
+        [[LogHelper helper] appendLog:err];
+        return;
+    }
+    
+    NSString *log = [NSString stringWithFormat:@"%s\nfile:%@\nlenght:%ld", __func__, filePath, srcData.length];
+    [[LogHelper helper] appendLog:log];
     NSData *encodeData = [[CoderHelper helper] encodeData:srcData];
     [encodeData writeToFile:destPath atomically:YES];
 }

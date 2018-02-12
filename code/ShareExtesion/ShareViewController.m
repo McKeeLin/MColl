@@ -8,6 +8,7 @@
 
 #import "ShareViewController.h"
 #import "dataHelper.h"
+#import "LogHelper.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 
 @interface ShareViewController ()
@@ -16,9 +17,20 @@
     NSOperationQueue *_queue;
 }
 
+@property (nonatomic) dataHelper *helper;
+
 @end
 
 @implementation ShareViewController
+
+- (dataHelper*)helper
+{
+    if( !_helper )
+    {
+        _helper = [dataHelper helper];
+    }
+    return _helper;
+}
 
 - (BOOL)isContentValid {
     // Do validation of contentText and/or NSExtensionContext attachments here
@@ -94,23 +106,30 @@
                                           if ([(NSObject *)item isKindOfClass:[NSURL class]])
                                           {
                                               NSLog(@"分享的URL = %@", item);
+                                              NSString *log = [NSString stringWithFormat:@"分享的URL = %@", item];
+                                              [[LogHelper helper] appendLog:log];
                                               NSURL *url = (NSURL*)item;
-                                              dataHelper *helper = [dataHelper helper];
-                                              [helper saveShareFile:url];
+                                              [self.helper saveShareFile:url];
                                           }
                                           else
                                           {
                                               NSLog(@"分享的 [obj] = %@", item);
+                                              NSString *log = [NSString stringWithFormat:@"分享的 [obj] = %@", item];
+                                              [[LogHelper helper] appendLog:log];
                                           }
                                           if( error )
                                           {
                                               NSLog(@"***error:\n%@", error);
+                                              [[LogHelper helper] appendLog:error.localizedDescription];
                                           }
                                       }];
                 }
                 else
                 {
                     NSLog(@"====> unknown provider:\n%@", provider);
+                    NSString *log = [NSString stringWithFormat:@"====> unknown provider:\n%@", provider];
+                    [[LogHelper helper] appendLog:log];
+
                 }
             }
         }

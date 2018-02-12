@@ -65,6 +65,14 @@
 		267A624B1F334AF900DB08F2 /* UILabel+Ex.m in Sources */ = {isa = PBXBuildFile; fileRef = 267A62471F334AF900DB08F2 /* UILabel+Ex.m */; };
 		267A624E1F3354AE00DB08F2 /* RDisclosure@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 267A624C1F3354AE00DB08F2 /* RDisclosure@2x.png */; };
 		267A624F1F3354AE00DB08F2 /* RDisclosure@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 267A624D1F3354AE00DB08F2 /* RDisclosure@3x.png */; };
+		267FAF382027EC72001F5ADF /* LogVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 267FAF332027EC70001F5ADF /* LogVC.m */; };
+		267FAF392027EC72001F5ADF /* LogVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 267FAF352027EC71001F5ADF /* LogVC.xib */; };
+		267FAF3A2027EC72001F5ADF /* LogHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 267FAF362027EC71001F5ADF /* LogHelper.m */; };
+		267FAF3D2027ED78001F5ADF /* BaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 267FAF3C2027ED78001F5ADF /* BaseVC.m */; };
+		267FAF3E2027F5C9001F5ADF /* LogHelper.h in Sources */ = {isa = PBXBuildFile; fileRef = 267FAF372027EC72001F5ADF /* LogHelper.h */; };
+		267FAF3F2027F5C9001F5ADF /* LogHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 267FAF362027EC71001F5ADF /* LogHelper.m */; };
+		267FAF4520281B10001F5ADF /* icon_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 267FAF4320281B0E001F5ADF /* icon_back@2x.png */; };
+		267FAF4620281B10001F5ADF /* icon_back@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 267FAF4420281B0F001F5ADF /* icon_back@3x.png */; };
 		268ED13E1EB31EBC00F9294A /* GroupVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 268ED13D1EB31EBC00F9294A /* GroupVC.m */; };
 		269E9F451E124591005582FF /* PictureVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 269E9F441E124591005582FF /* PictureVC.m */; };
 		269E9F481E1247BD005582FF /* CollHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 269E9F471E1247BD005582FF /* CollHeader.m */; };
@@ -223,6 +231,15 @@
 		267A62471F334AF900DB08F2 /* UILabel+Ex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Ex.m"; sourceTree = "<group>"; };
 		267A624C1F3354AE00DB08F2 /* RDisclosure@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RDisclosure@2x.png"; sourceTree = "<group>"; };
 		267A624D1F3354AE00DB08F2 /* RDisclosure@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RDisclosure@3x.png"; sourceTree = "<group>"; };
+		267FAF332027EC70001F5ADF /* LogVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogVC.m; sourceTree = "<group>"; };
+		267FAF342027EC71001F5ADF /* LogVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogVC.h; sourceTree = "<group>"; };
+		267FAF352027EC71001F5ADF /* LogVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LogVC.xib; sourceTree = "<group>"; };
+		267FAF362027EC71001F5ADF /* LogHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogHelper.m; sourceTree = "<group>"; };
+		267FAF372027EC72001F5ADF /* LogHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogHelper.h; sourceTree = "<group>"; };
+		267FAF3B2027ED78001F5ADF /* BaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseVC.h; sourceTree = "<group>"; };
+		267FAF3C2027ED78001F5ADF /* BaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseVC.m; sourceTree = "<group>"; };
+		267FAF4320281B0E001F5ADF /* icon_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_back@2x.png"; sourceTree = "<group>"; };
+		267FAF4420281B0F001F5ADF /* icon_back@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_back@3x.png"; sourceTree = "<group>"; };
 		268ED13C1EB31EBC00F9294A /* GroupVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupVC.h; sourceTree = "<group>"; };
 		268ED13D1EB31EBC00F9294A /* GroupVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupVC.m; sourceTree = "<group>"; };
 		269E9F431E124591005582FF /* PictureVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureVC.h; sourceTree = "<group>"; };
@@ -468,6 +485,15 @@
 		267A623F1F334AF900DB08F2 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				267FAF4320281B0E001F5ADF /* icon_back@2x.png */,
+				267FAF4420281B0F001F5ADF /* icon_back@3x.png */,
+				267FAF3B2027ED78001F5ADF /* BaseVC.h */,
+				267FAF3C2027ED78001F5ADF /* BaseVC.m */,
+				267FAF372027EC72001F5ADF /* LogHelper.h */,
+				267FAF362027EC71001F5ADF /* LogHelper.m */,
+				267FAF342027EC71001F5ADF /* LogVC.h */,
+				267FAF332027EC70001F5ADF /* LogVC.m */,
+				267FAF352027EC71001F5ADF /* LogVC.xib */,
 				262442281F565301003B2F9C /* UIAlertView+Blocks.h */,
 				262442291F565301003B2F9C /* UIAlertView+Blocks.m */,
 				26471DFA1F4D702500652589 /* BlurCoverView.h */,
@@ -649,6 +675,9 @@
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
 							};
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.iCloud = {
 								enabled = 1;
 							};
@@ -721,10 +750,13 @@
 				26CAE2C62010CB9B00227EC8 /* dir@3x.png in Resources */,
 				26CAE2C52010CB9B00227EC8 /* dir@2x.png in Resources */,
 				08A238021A8046C70041531F /* Main.storyboard in Resources */,
+				267FAF4520281B10001F5ADF /* icon_back@2x.png in Resources */,
+				267FAF4620281B10001F5ADF /* icon_back@3x.png in Resources */,
 				265F05F31F4F0EE700279435 /* icon29@2x.png in Resources */,
 				267A624E1F3354AE00DB08F2 /* RDisclosure@2x.png in Resources */,
 				265F05F21F4F0EE700279435 /* icon20@3x.png in Resources */,
 				269E9F4C1E1252CF005582FF /* add@2x.png in Resources */,
+				267FAF392027EC72001F5ADF /* LogVC.xib in Resources */,
 				080866FF1A86074C0036DBD1 /* localizable.strings in Resources */,
 				265F05F51F4F0EE700279435 /* icon40@2x.png in Resources */,
 				269E9F4D1E1252CF005582FF /* add@3x.png in Resources */,
@@ -786,6 +818,7 @@
 				267A624A1F334AF900DB08F2 /* UIFont+Ex.m in Sources */,
 				08A237FF1A8046C70041531F /* collectionVC.m in Sources */,
 				08B27EA51A831E1A00402554 /* captureVC.m in Sources */,
+				267FAF382027EC72001F5ADF /* LogVC.m in Sources */,
 				267A62481F334AF900DB08F2 /* HRListView.m in Sources */,
 				08A2381F1A8047C80041531F /* dataHelper.m in Sources */,
 				08B27EA81A831EA400402554 /* settingVC.m in Sources */,
@@ -794,10 +827,12 @@
 				086AFAC41A843E7A00BD94B0 /* captureView.m in Sources */,
 				268ED13E1EB31EBC00F9294A /* GroupVC.m in Sources */,
 				08B27E941A82ECFB00402554 /* icloudHelper.m in Sources */,
+				267FAF3A2027EC72001F5ADF /* LogHelper.m in Sources */,
 				26471DFF1F4D702500652589 /* UIImage+ImageEffects.m in Sources */,
 				26471DEE1F4D6DAF00652589 /* TouchIDLoginVC.m in Sources */,
 				26A8448F1E0381F500211D7A /* ItemObject.m in Sources */,
 				264819A0200DFB62004D4869 /* GroupItemCell.m in Sources */,
+				267FAF3D2027ED78001F5ADF /* BaseVC.m in Sources */,
 				269E9F481E1247BD005582FF /* CollHeader.m in Sources */,
 				08A237FC1A8046C70041531F /* AppDelegate.m in Sources */,
 				267A624B1F334AF900DB08F2 /* UILabel+Ex.m in Sources */,
@@ -840,6 +875,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				267FAF3E2027F5C9001F5ADF /* LogHelper.h in Sources */,
+				267FAF3F2027F5C9001F5ADF /* LogHelper.m in Sources */,
 				26D579D41E951D0B0051F55A /* myDocument.m in Sources */,
 				26D579CC1E951CE10051F55A /* icloudHelper.h in Sources */,
 				26D579CD1E951CE10051F55A /* icloudHelper.m in Sources */,
@@ -1016,6 +1053,7 @@
 				INFOPLIST_FILE = MColl/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mckeelin.MColl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1035,6 +1073,7 @@
 				INFOPLIST_FILE = MColl/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mckeelin.MColl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
