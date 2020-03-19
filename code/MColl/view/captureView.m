@@ -83,6 +83,13 @@
         if( conn.supportsVideoOrientation ){
             conn.videoOrientation = (NSInteger)[UIApplication sharedApplication].statusBarOrientation;
         }
+        if( _camera.position == AVCaptureDevicePositionFront )
+        {
+            if( conn.supportsVideoMirroring )
+            {
+                conn.videoMirrored = YES;
+            }
+        }
     }
     
     if( running ){

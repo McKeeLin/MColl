@@ -15,6 +15,7 @@
 #import "HRListView.h"
 #import "captureVC.h"
 #import "UIAlertView+Blocks.h"
+#import "OAImageLibrary.h"
 
 @interface GroupVC ()<UICollectionViewDelegate,UICollectionViewDataSource,HRListViewDelegate>
 {
@@ -33,6 +34,7 @@
     UIBarButtonItem *_renameItem;
     UIBarButtonItem *_deleteGroupItem;
     UIBarButtonItem *_captureItem;
+    UIBarButtonItem *_improtItem;
     BOOL _selectionMode;
 }
 
@@ -71,8 +73,10 @@
     _moveItem = [[UIBarButtonItem alloc] initWithTitle:@"移动到" style:UIBarButtonItemStylePlain target:self action:@selector(onTouchMove:)];
     _removeItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(onTouchRemove:)];
     _restoreItem = [[UIBarButtonItem alloc] initWithTitle:@"恢复" style:UIBarButtonItemStylePlain target:self action:@selector(restore)];
+    _improtItem = [[UIBarButtonItem alloc] initWithTitle:@"导入" style:UIBarButtonItemStylePlain target:self action:@selector(onTouchImportFromPhotoLibrary:)];
     UIBarButtonItem *flexibleItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     UIBarButtonItem *flexibleItem2 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    UIBarButtonItem *flexibleItem3 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     if( _group.type == RECYCLE_BOX )
     {
         _toolbar.items = @[flexibleItem];
@@ -83,9 +87,11 @@
     }
     else
     {
-        _toolbar.items = @[_renameItem, flexibleItem, _captureItem, flexibleItem2, _deleteGroupItem];
+        _toolbar.items = @[_renameItem, flexibleItem, _captureItem, flexibleItem2, _improtItem, flexibleItem3, _deleteGroupItem];
     }
     [self.view addSubview:_toolbar];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onCaptureFinished) name:NN_CAPTURE_FINISH object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -238,6 +244,7 @@
     
     UIBarButtonItem *flexibleItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     UIBarButtonItem *flexibleItem2 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    UIBarButtonItem *flexibleItem3 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     if( _group.type == RECYCLE_BOX )
     {
         _toolbar.items = @[flexibleItem];
@@ -248,7 +255,7 @@
     }
     else
     {
-        _toolbar.items = @[_renameItem, flexibleItem, _captureItem, flexibleItem2, _deleteGroupItem];
+        _toolbar.items = @[_renameItem, flexibleItem, _captureItem, flexibleItem2, _improtItem, flexibleItem3, _deleteGroupItem];
     }
 }
 
@@ -391,6 +398,29 @@
     [self presentViewController:alert animated:YES completion:nil];
 }
 
+- (void)onTouchImportFromPhotoLibrary:(id)sender
+{
+    [[OAImageLibrary sharedInstance] showPickerInController:self
+                                                  maxNumber:100
+                                            completeHandler:^(OAImageLibraryCompleteType type,
+                                                              NSArray<PHAsset *> *imageData,
+                                                              NSString *message)
+    {
+        for( NSInteger i = 0; i < imageData.count; i++ )
+        {
+            PHAsset *asset = imageData[i];
+            [asset imageWithSize:PHImageManagerMaximumSize completeHandeler:^(UIImage *image) {
+                if( image )
+                {
+                    NSData *data = UIImagePNGRepresentation(image);
+                    //data = UIImageJPEGRepresentation(image, 1);
+                    [[dataHelper helper] saveCaputreData:data toGroup:self.group];
+                }
+            }];
+        }
+    }];
+}
+
 - (void)showCapture
 {
     captureVC *vc = [[captureVC alloc] init];
@@ -485,6 +515,7 @@
 - (void)onCaptureFinished
 {
     [_coll reloadData];
+    NSLog(@"---->");
 }
 
 - (void)reload

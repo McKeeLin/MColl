@@ -11,6 +11,7 @@
 #import "appHelper.h"
 #import <ImageIO/ImageIO.h>
 #import "LogHelper.h"
+#import "NSArray+Ex.h"
 
 #define COLLECTION_PATH_NAME @"collection"
 #define RECYCLE_BOX_NAME    @"recycleBox"
@@ -75,8 +76,49 @@
         
         _groups = [[NSMutableArray alloc] initWithCapacity:0];
         [self initGroups];
+        [_groups exAddObject:self.shareGroup];
     }
     return self;
+}
+
+- (groupObject*)shareGroup
+{
+    if( !_shareGroup )
+    {
+        NSFileManager *fm = [NSFileManager defaultManager];
+        NSString *dirName = @"收件箱";
+        NSString *sharePath = [[self sharePath] stringByAppendingPathComponent:dirName];
+        NSError *error;
+        if( ![fm fileExistsAtPath:sharePath] )
+        {
+            [fm createDirectoryAtPath:sharePath withIntermediateDirectories:YES attributes:nil error:&error];
+        }
+        _shareGroup = [[groupObject alloc] init];
+        _shareGroup.title = dirName;
+        _shareGroup.path = sharePath;
+        _shareGroup.type = SHARE_BOX;
+        NSDirectoryEnumerator *enumerator = [fm enumeratorAtPath:sharePath];
+        NSString *subItem = nil;
+        while( subItem = [enumerator nextObject] )
+        {
+            [enumerator skipDescendants];
+            if( [subItem isEqualToString:@"Caches"]
+               || [subItem isEqualToString:@".DS_Store"] )
+            {
+                continue;
+            }
+            NSRange range = [subItem rangeOfString:@"."];
+            if( range.location == 0 )
+            {
+                continue;
+            }
+            ItemObject *item = [[ItemObject alloc] init];
+            item.path = [_shareGroup.path stringByAppendingPathComponent:subItem];
+            item.fileName = subItem;
+            [_shareGroup addItem:item];
+        }
+    }
+    return _shareGroup;
 }
 
 - (groupObject*)recycleBoxGroup
@@ -160,8 +202,9 @@
 {
     NSDate *date = [NSDate date];
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
-    df.dateFormat = @"yyyyMMddHHmmss";
-    return [NSString stringWithFormat:@"%@.jpeg", [df stringFromDate:date]];
+    df.dateFormat = @"yyyyMMddHHmmss_SSS";
+    NSString *name = [NSString stringWithFormat:@"%@.jpeg", [df stringFromDate:date]];
+    return name;
 }
 
 - (NSString*)pathForGroup:(NSString*)groupName createWhenNotExist:(BOOL)create{
@@ -224,39 +267,6 @@
         [arr addObject:group];
     }
     
-    NSString *dirName = @"收件箱";
-    NSString *sharePath = [[self sharePath] stringByAppendingPathComponent:dirName];
-    NSError *error;
-    if( ![fm fileExistsAtPath:sharePath] )
-    {
-        [fm createDirectoryAtPath:sharePath withIntermediateDirectories:YES attributes:nil error:&error];
-    }
-    _shareGroup = [[groupObject alloc] init];
-    _shareGroup.title = dirName;
-    _shareGroup.path = sharePath;
-    _shareGroup.type = SHARE_BOX;
-    enumerator = [fm enumeratorAtPath:sharePath];
-    subItem = nil;
-    while( subItem = [enumerator nextObject] )
-    {
-        [enumerator skipDescendants];
-        if( [subItem isEqualToString:@"Caches"]
-           || [subItem isEqualToString:@".DS_Store"] )
-        {
-            continue;
-        }
-        NSRange range = [subItem rangeOfString:@"."];
-        if( range.location == 0 )
-        {
-            continue;
-        }
-        ItemObject *item = [[ItemObject alloc] init];
-        item.path = [_shareGroup.path stringByAppendingPathComponent:subItem];
-        item.fileName = subItem;
-        [_shareGroup addItem:item];
-    }
-    [arr addObject:_shareGroup];
-    
     if( arr.count > 0 )
     {
         [_groups addObjectsFromArray:arr];
@@ -280,10 +290,10 @@
     group.title = name;
     group.path = [self pathForGroup:name createWhenNotExist:YES];
     
-    groupObject *shareGroup = [self findGroupByName:@"共享"];
+    groupObject *shareGroup = [self findGroupByName:@"收件箱"];
     [_groups removeObject:shareGroup];
     [_groups addObject:group];
-    [_groups addObject:shareGroup];
+    [_groups exAddObject:shareGroup];
 }
 
 - (void)saveCaputreData:(NSData *)data toGroup:(groupObject*)group

@@ -38,9 +38,11 @@
     UINib *cell = [UINib nibWithNibName:@"GroupItemCell" bundle:nil];
     [_collectonView registerNib:cell forCellWithReuseIdentifier:@"GroupItemCell"];
     
+    /*
     UIBarButtonItem *logItem = [[UIBarButtonItem alloc] initWithTitle:@"日志" style:UIBarButtonItemStylePlain target:self action:@selector(showLog)];
     self.navigationItem.rightBarButtonItem = logItem;
     [[LogHelper helper] appendLog:@"begin"];
+    */
 }
 
 - (void)didReceiveMemoryWarning {

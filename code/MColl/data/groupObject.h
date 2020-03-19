@@ -27,6 +27,8 @@ typedef enum{
 
 @property NSMutableArray *items;
 
+@property (nonatomic) NSMutableArray *subGroups;
+
 - (void)rename:(NSString*)newName;
 
 - (void)addItem:(ItemObject*)item;

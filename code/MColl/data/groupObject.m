@@ -31,7 +31,7 @@
 
 - (void)rename:(NSString *)newName
 {
-    if( [newName isEqualToString:@"共享"] )
+    if( [newName isEqualToString:@"收件箱"] )
     {
         return;
     }
@@ -118,6 +118,15 @@
     CGImageRelease(scaledImageRef);
     CFRelease(src);
     return thumbnail;
+}
+
+- (NSMutableArray*)subGroups
+{
+    if( !_subGroups )
+    {
+        _subGroups = [NSMutableArray arrayWithCapacity:0];
+    }
+    return _subGroups;
 }
 
 @end
