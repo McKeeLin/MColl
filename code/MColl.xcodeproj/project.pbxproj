@@ -167,7 +167,7 @@
 		08A237FD1A8046C70041531F /* collectionVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = collectionVC.h; sourceTree = "<group>"; };
 		08A237FE1A8046C70041531F /* collectionVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = collectionVC.m; sourceTree = "<group>"; };
 		08A238011A8046C70041531F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		08A238031A8046C70041531F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		08A238031A8046C70041531F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../Images.xcassets; sourceTree = "<group>"; };
 		08A238061A8046C70041531F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		08A2380C1A8046C70041531F /* MCollTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MCollTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		08A238111A8046C70041531F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -388,7 +388,6 @@
 				08A237FD1A8046C70041531F /* collectionVC.h */,
 				08A237FE1A8046C70041531F /* collectionVC.m */,
 				08A238001A8046C70041531F /* Main.storyboard */,
-				08A238031A8046C70041531F /* Images.xcassets */,
 				08A238051A8046C70041531F /* LaunchScreen.xib */,
 				08A237F61A8046C70041531F /* Supporting Files */,
 				265E3C671F0DCF7400D7E095 /* PrefixHeader.pch */,
@@ -426,6 +425,7 @@
 		08A2381C1A8047A70041531F /* data */ = {
 			isa = PBXGroup;
 			children = (
+				08A238031A8046C70041531F /* Images.xcassets */,
 				265380FA1F57A60400C66651 /* CoderHelper.h */,
 				265380FB1F57A60400C66651 /* CoderHelper.m */,
 				08B27E9A1A82EEA700402554 /* myDocument.h */,
